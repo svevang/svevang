@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 776 684" width="776" height="684">
+<title id="title">Repositories</title>
+<desc id="desc">Public repositories sorted by latest push timestamp.</desc>
+<style>
+.bg{fill:#f6f8fa}.card{fill:#fff;stroke:#d0d7de;stroke-width:1}.name{fill:#0969da;font:600 16px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}.meta{fill:#57606a;font:13px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}.pill{fill:#ddf4ff;stroke:#54aeff;stroke-width:1}.pillText{fill:#0969da;font:600 12px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}
+</style>
+<rect class="bg" width="776" height="684" rx="12"/>
+<a href="https://github.com/svevang/svevang" target="_blank">
+<rect class="card" x="20" y="20" width="360" height="116" rx="8"/>
+<text class="name" x="36" y="48">svevang/svevang</text>
+<rect class="pill" x="36" y="92" width="96" height="24" rx="12"/>
+<text class="pillText" x="48" y="108">Python</text>
+<text class="meta" x="148" y="109">2026-05-13 22:16:42 UTC</text>
+</a>
+<a href="https://github.com/svevang/shape" target="_blank">
+<rect class="card" x="396" y="20" width="360" height="116" rx="8"/>
+<text class="name" x="412" y="48">svevang/shape</text>
+<rect class="pill" x="412" y="92" width="96" height="24" rx="12"/>
+<text class="pillText" x="424" y="108">Shell</text>
+<text class="meta" x="524" y="109">2026-03-26 19:09:06 UTC</text>
+</a>
+<a href="https://github.com/svevang/planki" target="_blank">
+<rect class="card" x="20" y="152" width="360" height="116" rx="8"/>
+<text class="name" x="36" y="180">svevang/planki</text>
+<text class="meta" x="36" y="205">Planki - The plain Anki import/export tool</text>
+<rect class="pill" x="36" y="224" width="96" height="24" rx="12"/>
+<text class="pillText" x="48" y="240">Python</text>
+<text class="meta" x="148" y="241">2026-03-26 17:20:17 UTC</text>
+</a>
+<a href="https://github.com/svevang/anki" target="_blank">
+<rect class="card" x="396" y="152" width="360" height="116" rx="8"/>
+<text class="name" x="412" y="180">svevang/anki</text>
+<text class="meta" x="412" y="205">Anki is a smart spaced repetition flashcard p…</text>
+<rect class="pill" x="412" y="224" width="96" height="24" rx="12"/>
+<text class="pillText" x="424" y="240">Rust</text>
+<text class="meta" x="524" y="241">2026-02-24 04:43:08 UTC</text>
+</a>
+<a href="https://github.com/svevang/dot-files" target="_blank">
+<rect class="card" x="20" y="284" width="360" height="116" rx="8"/>
+<text class="name" x="36" y="312">svevang/dot-files</text>
+<rect class="pill" x="36" y="356" width="96" height="24" rx="12"/>
+<text class="pillText" x="48" y="372">Shell</text>
+<text class="meta" x="148" y="373">2026-02-23 03:41:15 UTC</text>
+</a>
+<a href="https://github.com/svevang/gmail-inbox-fence" target="_blank">
+<rect class="card" x="396" y="284" width="360" height="116" rx="8"/>
+<text class="name" x="412" y="312">svevang/gmail-inbox-fence</text>
+<text class="meta" x="412" y="337">Hold back the emails with a visual fence</text>
+<rect class="pill" x="412" y="356" width="96" height="24" rx="12"/>
+<text class="pillText" x="424" y="372">JavaScript</text>
+<text class="meta" x="524" y="373">2026-02-10 04:54:42 UTC</text>
+</a>
+<a href="https://github.com/svevang/registry" target="_blank">
+<rect class="card" x="20" y="416" width="360" height="116" rx="8"/>
+<text class="name" x="36" y="444">svevang/registry</text>
+<rect class="pill" x="36" y="488" width="96" height="24" rx="12"/>
+<text class="pillText" x="48" y="504">Shell</text>
+<text class="meta" x="148" y="505">2024-11-13 03:47:33 UTC</text>
+</a>
+<a href="https://github.com/svevang/polars-ruby" target="_blank">
+<rect class="card" x="396" y="416" width="360" height="116" rx="8"/>
+<text class="name" x="412" y="444">svevang/polars-ruby</text>
+<text class="meta" x="412" y="469">Blazingly fast DataFrames for Ruby</text>
+<rect class="pill" x="412" y="488" width="96" height="24" rx="12"/>
+<text class="pillText" x="424" y="504">Ruby</text>
+<text class="meta" x="524" y="505">2024-02-14 19:27:03 UTC</text>
+</a>
+<a href="https://github.com/ferndopolis/timecop-console" target="_blank">
+<rect class="card" x="20" y="548" width="360" height="116" rx="8"/>
+<text class="name" x="36" y="576">ferndopolis/timecop-console</text>
+<text class="meta" x="36" y="601">Expose Timecop&#x27;s capabilities to the UI in yo…</text>
+<rect class="pill" x="36" y="620" width="96" height="24" rx="12"/>
+<text class="pillText" x="48" y="636">Ruby</text>
+<text class="meta" x="148" y="637">2022-07-21 22:32:13 UTC</text>
+</a>
+<a href="https://github.com/PRX/prx_access" target="_blank">
+<rect class="card" x="396" y="548" width="360" height="116" rx="8"/>
+<text class="name" x="412" y="576">PRX/prx_access</text>
+<text class="meta" x="412" y="601">Access the PRX Hypermedia HAL APIs.</text>
+<rect class="pill" x="412" y="620" width="96" height="24" rx="12"/>
+<text class="pillText" x="424" y="636">Ruby</text>
+<text class="meta" x="524" y="637">2021-11-16 18:56:35 UTC</text>
+</a>
+</svg>

@@ -1,0 +1,9 @@
+<!-- Generated from README.md.template; edit that file, not README.md. -->
+
+Drop by drop the bucket fills.
+
+## Recent repositories
+
+${repository_table}
+
+_Last updated: ${updated_at}_

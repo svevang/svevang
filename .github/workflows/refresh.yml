@@ -1,0 +1,97 @@
+name: Refresh activity
+
+on:
+  schedule:
+    - cron: '17 * * * *'   # hourly at :17 UTC — off-peak to reduce drift
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'README.md.template'
+      - 'scripts/render_activity.py'
+      - '.github/workflows/refresh.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-activity
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch repositories and activity
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          activity_since=$(python3 -c 'from datetime import datetime, timedelta, timezone; now = datetime.now(timezone.utc); start = (now - timedelta(weeks=11, days=now.weekday())).replace(hour=0, minute=0, second=0, microsecond=0); print(start.isoformat().replace("+00:00", "Z"))')
+          gh api graphql -F activitySince="$activity_since" -f query='
+            query($activitySince: DateTime!) {
+              user(login: "svevang") {
+                repositories(
+                  first: 10,
+                  orderBy: {field: PUSHED_AT, direction: DESC},
+                  privacy: PUBLIC
+                ) {
+                  nodes {
+                    nameWithOwner
+                    url
+                    pushedAt
+                    description
+                    primaryLanguage { name }
+                    isPrivate
+                  }
+                }
+                contributionsCollection(from: $activitySince) {
+                  startedAt
+                  endedAt
+                  commitContributionsByRepository(maxRepositories: 100) {
+                    repository { nameWithOwner }
+                    contributions(
+                      first: 100,
+                      orderBy: {field: OCCURRED_AT, direction: ASC}
+                    ) {
+                      nodes {
+                        occurredAt
+                        commitCount
+                      }
+                    }
+                  }
+                }
+              }
+            }' > activity.json
+
+      - name: Render into README
+        run: python3 scripts/render_activity.py activity.json README.md
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet README.md; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+
+          if [[ "$(git log -1 --format=%s)" == "chore: refresh activity" ]] && \
+             [[ "$(git log -1 --format=%ae)" == "41898282+github-actions[bot]@users.noreply.github.com" ]]; then
+            git commit --amend --no-edit
+          else
+            git commit -m "chore: refresh activity"
+          fi
+
+          git push \
+            --force-with-lease="refs/heads/main:${GITHUB_SHA}" \
+            origin HEAD:refs/heads/main
+
+  dispatch-repo-list:
+    name: Dispatch repo-list
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    uses: ./.github/workflows/dispatch-repo-list.yml
+    secrets:
+      CROSS_REPO_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
