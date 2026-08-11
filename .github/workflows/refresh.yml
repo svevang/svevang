@@ -23,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Fetch repositories and activity
         env:
@@ -78,8 +80,24 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md
 
-          git commit -m "chore: refresh activity"
-          git push origin HEAD:refs/heads/main
+          refresh_commit=$(git log \
+            -1 \
+            --format='%H' \
+            --grep='^chore: refresh activity$')
+
+          if [[ -n "$refresh_commit" ]]; then
+            git commit --fixup="$refresh_commit"
+            GIT_SEQUENCE_EDITOR=true git rebase \
+              --interactive \
+              --autosquash \
+              "$refresh_commit^"
+          else
+            git commit -m "chore: refresh activity"
+          fi
+
+          git push \
+            --force-with-lease="refs/heads/main:${GITHUB_SHA}" \
+            origin HEAD:refs/heads/main
 
   dispatch-repo-list:
     name: Dispatch repo-list
