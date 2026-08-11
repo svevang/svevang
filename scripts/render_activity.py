@@ -106,8 +106,6 @@ def render_table(
     maximum = max((max(counts) for counts in repo_counts.values()), default=0)
 
     lines = [
-        "_Your commits by week, oldest → newest._",
-        "",
         "| Repo | Language | Activity (12 weeks) | Last pushed |",
         "| --- | --- | --- | --- |",
     ]
