@@ -108,8 +108,8 @@ def render_table(
     lines = [
         "_Your commits by week, oldest → newest._",
         "",
-        "| Repo | Language | Activity (12 weeks) | Commits | Last pushed |",
-        "| --- | --- | --- | ---: | --- |",
+        "| Repo | Language | Activity (12 weeks) | Last pushed |",
+        "| --- | --- | --- | --- |",
     ]
     for repo in repos:
         name = repo["nameWithOwner"].replace("|", "\\|")
@@ -121,8 +121,7 @@ def render_table(
         counts = repo_counts[repo["nameWithOwner"]]
         histogram = render_histogram(counts, maximum)
         lines.append(
-            f"| [{name}]({url}) | {language} | `{histogram}` | "
-            f"{sum(counts)} | {pushed} |"
+            f"| [{name}]({url}) | {language} | `{histogram}` | {pushed} |"
         )
     return "\n".join(lines)
 
