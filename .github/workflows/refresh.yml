@@ -78,16 +78,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md
 
-          if [[ "$(git log -1 --format=%s)" == "chore: refresh activity" ]] && \
-             [[ "$(git log -1 --format=%ae)" == "41898282+github-actions[bot]@users.noreply.github.com" ]]; then
-            git commit --amend --no-edit
-          else
-            git commit -m "chore: refresh activity"
-          fi
-
-          git push \
-            --force-with-lease="refs/heads/main:${GITHUB_SHA}" \
-            origin HEAD:refs/heads/main
+          git commit -m "chore: refresh activity"
+          git push origin HEAD:refs/heads/main
 
   dispatch-repo-list:
     name: Dispatch repo-list
