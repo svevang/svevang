@@ -98,10 +98,3 @@ jobs:
           git push \
             --force-with-lease="refs/heads/main:${GITHUB_SHA}" \
             origin HEAD:refs/heads/main
-
-  dispatch-repo-list:
-    name: Dispatch repo-list
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    uses: ./.github/workflows/dispatch-repo-list.yml
-    secrets:
-      CROSS_REPO_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
